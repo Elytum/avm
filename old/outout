@@ -1,0 +1,2997 @@
+Iterator: [push a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line 0 : Error : [; -------------]
+Iterator: [push a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line 1 : Error : [; sample.avm -]
+Iterator: [push a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line 2 : Error : [; -------------]
+Iterator: [push a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line 3 : Error : []
+Iterator: [push a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [a int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line 4 : Error : [push a int32(42)]
+Iterator: [push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[05]
+Function: push
+Type: int32
+Var: (33)
+-----------------------------
+
+Iterator: [add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[06]
+Function: add
+Type: 
+Var: ()
+-----------------------------
+
+Iterator: [push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [float(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [44.55)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[07]
+Function: push
+Type: float
+Var: (44.55)
+-----------------------------
+
+Iterator: [mul
+push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[08]
+Function: mul
+Type: 
+Var: ()
+-----------------------------
+
+Iterator: [push double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[09]
+Function: push
+Type: double
+Var: (42.42)
+-----------------------------
+
+Iterator: [push int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [int32(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [(42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [42)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [)
+dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[10]
+Function: push
+Type: int32
+Var: (42)
+-----------------------------
+
+Iterator: [dump
+pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[11]
+Function: dump
+Type: 
+Var: ()
+-----------------------------
+
+Iterator: [pop
+assert double(42.42)
+exit
+]
+
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[12]
+Function: pop
+Type: 
+Var: ()
+-----------------------------
+
+Iterator: [assert double(42.42)
+exit
+]
+
+
+Iterator: [double(42.42)
+exit
+]
+
+
+Iterator: [(42.42)
+exit
+]
+
+
+Iterator: [42.42)
+exit
+]
+
+
+Iterator: [)
+exit
+]
+
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[13]
+Function: assert
+Type: double
+Var: (42.42)
+-----------------------------
+
+Iterator: [exit
+]
+
+
+Iterator: []
+
+
+Line[14]
+Function: exit
+Type: 
+Var: ()
+-----------------------------
+
+*********************
