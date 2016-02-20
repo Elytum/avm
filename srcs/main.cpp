@@ -1,28 +1,9 @@
-/*
- *****************************************************************
- *                 Simple C++ Lexer Toolkit Library              *
- *                                                               *
- * Lexer Examples                                                *
- * Author: Arash Partow (2001)                                   *
- * URL: http://www.partow.net/programming/lexer/index.html       *
- *                                                               *
- * Copyright notice:                                             *
- * Free use of the Simple C++ Lexer Toolkit Library is permitted *
- * under the guidelines and in accordance with the most current  *
- * version of the Common Public License.                         *
- * http://www.opensource.org/licenses/cpl1.0.php                 *
- *                                                               *
- *****************************************************************
-*/
-
-
 #include <avm.hpp>
- 
+#include <lexertk.hpp>
+
 #include <iostream>
-#include <string>
 #include <vector>
 
-#include "lexertk.hpp"
 
 struct function_definition
 {
@@ -118,7 +99,7 @@ void  write_function(function_definition &fd)
    fd.clear();
 }
 
-void interprete(const std::string &program)
+std::string compile(const std::string &program)
 {
    function_definition     fd;
    std::string             residual = program;
@@ -149,44 +130,67 @@ void interprete(const std::string &program)
    }
    while (!residual.empty());
    std::cout << "*********************" << std::endl;
+   return ("This is the program\n");
 }
 
-// #include <fstream>
-// #include <string>
-// #include <cerrno>
+#include <iostream>
+#include <fstream>
 
-// std::string get_file_contents(const char *filename)
-// {
-//   std::ifstream in(filename, std::ios::in | std::ios::binary);
-//   if (in)
-//   {
-//     std::string contents;
-//     in.seekg(0, std::ios::end);
-//     contents.resize(in.tellg());
-//     in.seekg(0, std::ios::beg);
-//     in.read(&contents[0], contents.size());
-//     in.close();
-//     return(contents);
-//   }
-//   throw(InvalidFile());
-// }
+bool  put_file_contents(const std::string &content, const std::string &path)
+{
+   std::ofstream myfile;
+
+   myfile.open (path.c_str());
+   myfile << content.c_str();
+   myfile.close();
+   return true;
+}
 
 int main(int ac, char **av)
 {
-   if (ac != 2)
+   if (ac > 2)
    {
-      std::cout << "Wrong format" << std::endl;
+      std::cerr << "Wrong format: " << av[0] << " <FILE_PATH>" << std::endl;
       return (1);
    }
+   else if (ac == 2) {
+      const std::string    file_path = av[1];
+      const int            extension_begin = file_path.rfind(".") + 1;
+      const std::string    extension = file_path.substr(extension_begin, file_path.size() - extension_begin);
+
+      if (extension != "avm") {
+         std::cerr << "Unknown format: " << extension;
+         return (1);
+      }
+      const std::string    name = file_path.substr(0, extension_begin - 1);
+      const std::string    out = name + ".compiled";
+
+      try {
+         const std::string content = get_file_contents(file_path.c_str());
+         const std::string compiled = compile(content);
+
+         if (!(put_file_contents(content, out)))
+            std::cerr << "Couldn't save compiled file" << std::endl;
+      }
+      catch ( const std::exception& e ) {
+          std::cerr << e.what() << std::endl;
+          return (1);
+      }
+      //
+   }
    
-   try {
-      const std::string content = get_file_contents(av[1]);
-      interprete(content);
-   }
-   catch ( const std::exception& e ) {
-       std::cerr << e.what() << std::endl;
-       return (1);
-   }
+   
+   // if (ac == 2)
+   //    file_path = av[1];
+   
+   // try {
+   //    const std::string content = get_file_contents(file_path);
+   //    compile(content);
+   // }
+   // catch ( const std::exception& e ) {
+   //     std::cerr << e.what() << std::endl;
+   //     return (1);
+   // }
 
    return 0;
 }

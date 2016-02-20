@@ -22,7 +22,6 @@ FILES	=	main.cpp					\
 			exceptions/invalid_file.cpp
 
 INC		=	-I ./includes -I ./srcs/exceptions -I ./libs
-LIBS	=	
 CCFLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	$(addprefix srcs/, $(FILES))
@@ -37,8 +36,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CCFLAGS) $(INC) $(OBJS) -o $(NAME) $(LIBS) -O3
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -c  $(INC) $< -o $@
+%.o: %.cpp
+	$(CC) $(CCFLAGS) $(INC) -c $< -o $@
 	
 clean:
 	rm -f $(OBJS)
