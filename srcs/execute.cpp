@@ -1,7 +1,7 @@
 #include <avm.hpp>
 #include <iostream>
 
-bool		get_value(const std::string &code, size_t &i, char &type, int &value)
+bool		get_value(const std::string &code, size_t &i, char &type, long int &value)
 {
 	const std::string ptr = code.substr(i + 1);
 
@@ -21,16 +21,30 @@ bool		get_value(const std::string &code, size_t &i, char &type, int &value)
 		value = *reinterpret_cast<const int *>(ptr.c_str());
 		i += 4;
 	}
+	else if (type == FLOAT)
+	{
+		value = *reinterpret_cast<const float *>(ptr.c_str());
+		float test = *reinterpret_cast<const float *>(ptr.c_str());
+		std::cout << "Value: " << test << std::endl;
+		i += 4;
+	}
+	else if (type == DOUBLE)
+	{
+		value = *reinterpret_cast<const double *>(ptr.c_str());
+		double test = *reinterpret_cast<const double *>(ptr.c_str());
+		std::cout << "Value: " << test << std::endl;
+		i += 8;
+	}
 	else
 		return (false);
 	return (true);
 }
 
-bool		execute(const std::string &code)
+bool			execute(const std::string &code)
 {
-	size_t	i = 0;
-	char	type;
-	int		value;
+	size_t		i = 0;
+	char		type;
+	long int	value;
 
 	while (i < code.size())
 	{

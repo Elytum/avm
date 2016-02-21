@@ -104,7 +104,6 @@ bool parse_function_definition(std::string& func_def, function_definition& fd)
 
 void  compile_function(std::string &code, function_definition &fd, const compiler &compilator)
 {
-   // std::string ret = fd.function + ' '+ fd.type + ' ' + fd.var + '\n';
    compilator(code, fd.function, fd.type, fd.var);
    fd.clear();
    return ;

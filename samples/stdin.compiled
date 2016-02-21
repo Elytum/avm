@@ -1,7 +1,5 @@
-push int32(2)
-push int32(3)
-add
-assert int32(5)
-dump
-exit
-push;;
+Line 0 : Error : [push int32(42e2)]
+PUSH 42
+PUSH 42
+PUSH 42
+PUSH 2
