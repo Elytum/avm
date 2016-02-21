@@ -17,7 +17,11 @@ NAME	=	avm
 MYPATH	=	$(HOME)
 #--------------Sources----------------------#
 FILES	=	main.cpp					\
+			compile.cpp					\
+			execute.cpp					\
 			get_file_contents.cpp		\
+			put_file_contents.cpp		\
+			last_edit.cpp				\
 			exceptions/syntax.cpp		\
 			exceptions/invalid_file.cpp
 
