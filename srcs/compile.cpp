@@ -1,139 +1,154 @@
-#include <lexertk.hpp>
-
+#include <avm.hpp>
 #include <iostream>
-#include <vector>
+#include <string>
+#include <stdlib.h>
 
-struct function_definition
+static constexpr unsigned long long basis = 14695981039346656037ULL; 
+static constexpr unsigned long long prime = 1099511628211ULL;
+
+// compile-time hash helper function
+constexpr unsigned long long hashone(char c, const char* remain, unsigned long long value)
+{ return c == 0 ? value : hashone(remain[0], remain + 1, (value ^ c) * prime);}
+// compile-time hash
+constexpr unsigned long long hash(const char* str) 
+{ return hashone(str[0], str + 1, basis); }
+
+// run-time hash
+unsigned long long hash_rt(const char* str) 
 {
-   std::string function;
-   std::string type;
-   std::string body;
-   std::vector<std::string> var_list;
-   std::string var;
-
-   void clear()
-   {
-      function    .clear();
-      type        .clear();
-      body        .clear();
-      var_list    .clear();
-      var         .clear();
-   }
-};
-
-struct parse_function_definition_impl : public lexertk::parser_helper
-{
-   /*
-      Structure: function <name> (v0,v1,...,vn) { expression }
-   */
-
-   bool  finish_line(std::string& func_def)
-   {
-      std::size_t body_begin = current_token().position;
-      std::size_t body_end   = current_token().position - 1;
-
-      std::size_t size = body_end - body_begin + 1;
-
-      const std::size_t index = body_begin + size;
-
-      if (index < func_def.size())
-         func_def = func_def.substr(index,func_def.size() - index);
-      else
-         func_def = "";
-      return (true);
-   }
-
-   bool process(std::string& func_def, function_definition& fd)
-   {
-      /*                    Initialize lexel                   */
-      if (!init(func_def))
-         return false;
-
-      /*                  Search for function name             */
-      if (!token_is_then_assign(token_t::e_symbol, fd.function))
-         return false;
-
-      /*    If function doesn't take arugument, accept it      */
-      if (func_def[current_token().position - 1] == '\n')
-         return (finish_line(func_def));
-
-      /*          Else it has to take an argument              */
-      if (!token_is_then_assign(token_t::e_symbol, fd.type))
-         return false;
-
-      /*               Surrounded by parentheses               */
-      if (!token_is(token_t::e_lbracket))
-         return false;
-
-      /*                   Containing a value                  */
-      if (!token_is_then_assign(token_t::e_number, fd.var))
-            return false;
-
-      /*                 With closd brackets                   */
-      if (!token_is(token_t::e_rbracket))
-         return false;
-
-      /*       In that case, the line must be finised          */
-      if (func_def[current_token().position - 1] == '\n')
-         return (finish_line(func_def));
-      return false;
-   }
-};
-
-bool parse_function_definition(std::string& func_def, function_definition& fd)
-{
-   parse_function_definition_impl   parser;
-   return parser.process(func_def, fd);
+    unsigned long long hash = basis;
+    while (*str != 0) {
+        hash ^= str[0];
+        hash *= prime;
+        ++str;
+    }
+    return hash;
 }
 
-std::string  compile_function(function_definition &fd)
+int			get_int(const std::string &parameter)
 {
-   std::string ret = fd.function + fd.type + fd.var;
-   fd.clear();
-   return (ret);
+	long int	value;
+	char		*pos;
+
+	if (!parameter.compare(0, 2, "0b"))
+		value = strtol(parameter.substr(2).c_str(), &pos, 2);
+	else if (!parameter.compare(0, 2, "0x"))
+		value = strtol(parameter.c_str(), &pos, 16);
+	else if (!parameter.compare(0, 1, "0"))
+		value = strtol(parameter.c_str(), &pos, 8);
+	else
+		value = strtol(parameter.c_str(), &pos, 10);
+	return (value);
+}
+
+bool	add_arguments(std::string &code, const std::string &type, const std::string &parameter)
+{
+	std::cout << "\t\tParameter: " << parameter << std::endl;
+	if (type.empty() || parameter.empty())
+		return (false);
+	switch (hash_rt(type.c_str()))
+	{
+		case hash("int8"):
+		{
+			int v = (char)get_int(parameter);
+			std::cout << "Value: " << v << std::endl;
+			code.push_back(INT8);
+			break ;
+		}
+		case hash("int16"):
+		{
+			int v = (char)get_int(parameter);
+			std::cout << "Value: " << v << std::endl;
+			code.push_back(INT16);
+			break ;
+		}
+		case hash("int32"):
+		{
+			int v = (char)get_int(parameter);
+			std::cout << "Value: " << v << std::endl;
+			code.push_back(INT32);
+			break ;
+		}
+		case hash("float"):
+		{
+			code.push_back(FLOAT);
+			break ;
+		}
+		case hash("double"):
+		{
+			code.push_back(DOUBLE);
+			break ;
+		}
+	}
+	return (true);
+}
+
+bool	compilator(std::string &code, const std::string &function, const std::string &type, const std::string &parameter)
+{
+	switch (hash_rt(function.c_str()))
+	{
+		case hash("push"):
+		{
+			code.push_back(PUSH);
+			add_arguments(code, type, parameter);
+			break ;
+		}
+		case hash("pop"):
+		{
+			code.push_back(POP);
+			break ;
+		}
+		case hash("dump"):
+		{
+			code.push_back(DUMP);
+			break ;
+		}
+		case hash("assert"):
+		{
+			code.push_back(ASSERT);
+			add_arguments(code, type, parameter);
+			break ;
+		}
+		case hash("add"):
+		{
+			code.push_back(ADD);
+			break ;
+		}
+		case hash("sub"):
+		{
+			code.push_back(SUB);
+			break ;
+		}
+		case hash("mul"):
+		{
+			code.push_back(MUL);
+			break ;
+		}
+		case hash("div"):
+		{
+			code.push_back(DIV);
+			break ;
+		}
+		case hash("mod"):
+		{
+			code.push_back(MOD);
+			break ;
+		}
+		case hash("print"):
+		{
+			code.push_back(PRINT);
+			break ;
+		}
+		case hash("exit"):
+		{
+			code.push_back(EXIT);
+			break ;
+		}
+	}
+	return (true);
 }
 
 std::string compile(const std::string &program)
 {
-   function_definition     fd;
-   std::string             residual = program;
-   std::string             compiled;
-
-   int line_count = 0;
-   int new_line_pos;
-
-   /*                    As long as there is lines to compile                       */
-   do
-   {
-   /*                   If lexer parsing goes according to plan                     */
-      if (parse_function_definition(residual,fd))
-   /*                 Compile the function and add it to the code                   */
-         compiled += compile_function(fd);
-      else
-   /*                           Else report the error                               */
-      {
-   /*                           Find newline character                              */
-         if ((new_line_pos = residual.find("\n")) == -1)
-         {
-   /*          If there is not, report the error on the remaining line              */
-            printf("Line %i : Error : [%s]\n", line_count, residual.c_str());
-   /*                        Then stop the compilation                              */
-            break ;
-         }
-
-   /*                      Else Report the error on only this line                  */
-         printf("Line %i : Error : [%s]\n", line_count, residual.substr(0, new_line_pos).c_str());
-   /*                               And erase this line                             */
-         residual.erase(0, new_line_pos + 1);
-   /*                         If there is nothing more to compile                   */
-         if (residual.empty())
-   /*                              Stop the compilation                             */
-            break ;
-      }
-   /*                             Increment the line counter                        */
-      ++line_count;
-   }
-   while (!residual.empty());
-   /*                             Return the compiled code                          */
-   return (compiled);
+	return (extract(program, &compilator));
 }

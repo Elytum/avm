@@ -37,6 +37,7 @@
  *****************************************************************
 */
 
+#include <iostream>
 
 #ifndef INCLUDE_LEXERTK_HPP
 #define INCLUDE_LEXERTK_HPP
@@ -572,8 +573,6 @@ namespace lexertk
          skip_whitespace();
          skip_comments();
 
-         // std::cout << s_itr_ << std::endl << std::endl;
-
          if (is_end(s_itr_))
          {
             return;
@@ -675,19 +674,47 @@ namespace lexertk
             Attempt to match a valid numeric value in one of the following formats:
             1. 123456
             2. 123.456
-            3. 123.456e3
-            4. 123.456E3
-            5. 123.456e+3
-            6. 123.456E+3
-            7. 123.456e-3
-            8. 123.456E-3
+            3. 0x42
+            4. 0b101010
+            5. 052
+            6. +42
+            7. -42
          */
          const char* begin      = s_itr_;
          bool dot_found         = false;
-         bool e_found           = false;
-         bool post_e_sign_found = false;
          token_t t;
+         bool bin               = false;
+         bool octal             = false;
+         bool hexa              = false;
 
+         // std::cout << "\t" << s_itr_ << std::endl;
+         // if (*s_itr_ == '-' || *s_itr_ == '+')
+         //    ++s_itr_;
+         if (*s_itr_ == '0')
+         {
+            ++s_itr_;
+            if (*s_itr_ == 'x')
+            {
+               bin = true;
+               octal = true;
+               hexa = true;
+               ++s_itr_;
+            }
+            else if (*s_itr_ == 'b')
+            {
+               bin = true;
+               ++s_itr_;
+            }
+            else
+            {
+               bin = true;
+               octal = true;
+            }
+            dot_found = true;
+         }
+         (void)bin;
+         (void)hexa;
+         (void)octal;
          while (!is_end(s_itr_))
          {
             if ('.' == (*s_itr_))
@@ -702,48 +729,13 @@ namespace lexertk
                ++s_itr_;
                continue;
             }
-            else if (details::imatch('e',(*s_itr_)))
-            {
-               const char& c = *(s_itr_ + 1);
-
-               if (is_end(s_itr_ + 1))
-               {
-                  t.set_error(token::e_err_number,begin,s_itr_,base_itr_);
-                  token_list_.push_back(t);
-                  return;
-               }
-               else if (
-                        ('+' != c) &&
-                        ('-' != c) &&
-                        !details::is_digit(c)
-                       )
-               {
-                  t.set_error(token::e_err_number,begin,s_itr_,base_itr_);
-                  token_list_.push_back(t);
-                  return;
-               }
-
-               e_found = true;
+            else if ((!bin && details::is_digit(*s_itr_)) ||
+                  (bin && (*s_itr_ == '0' || *s_itr_ == '1')) ||
+                  (octal && (*s_itr_ == '2' || *s_itr_ == '3' || *s_itr_ == '4' || *s_itr_ == '5' || *s_itr_ == '6' || *s_itr_ == '7')) ||
+                  (hexa && (*s_itr_ == '8' || *s_itr_ == '9' || *s_itr_ == 'a' || *s_itr_ == 'b' || *s_itr_ == 'c' || *s_itr_ == 'd' || *s_itr_ == 'e' || *s_itr_ == 'f')))
                ++s_itr_;
-               continue;
-            }
-            else if (e_found && details::is_sign(*s_itr_))
-            {
-               if (post_e_sign_found)
-               {
-                  t.set_error(token::e_err_number,begin,s_itr_,base_itr_);
-                  token_list_.push_back(t);
-                  return;
-               }
-
-               post_e_sign_found = true;
-               ++s_itr_;
-               continue;
-            }
-            else if (('.' != (*s_itr_)) && !details::is_digit(*s_itr_))
-               break;
             else
-               ++s_itr_;
+               break;
          }
 
          t.set_numeric(begin,s_itr_,base_itr_);

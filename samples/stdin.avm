@@ -1,7 +1,5 @@
-push int32(2)
-push int32(3)
-add
-assert int32(5)
-dump
-exit
-push;;
+push int32(42e2)
+push int32(0b101010)
+push int32(0x2a)
+push int32(052)
+push int32(+2)

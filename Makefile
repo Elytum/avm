@@ -18,6 +18,7 @@ MYPATH	=	$(HOME)
 #--------------Sources----------------------#
 FILES	=	main.cpp					\
 			compile.cpp					\
+			extract.cpp					\
 			execute.cpp					\
 			get_file_contents.cpp		\
 			put_file_contents.cpp		\
@@ -26,7 +27,7 @@ FILES	=	main.cpp					\
 			exceptions/invalid_file.cpp
 
 INC		=	-I ./includes -I ./srcs/exceptions -I ./libs
-CCFLAGS	=	-Wall -Wextra -Werror -g
+CCFLAGS	=	-std=c++11 -Wall -Wextra -Werror -g
 
 SRCS	=	$(addprefix srcs/, $(FILES))
 OBJS	=	$(SRCS:.cpp=.o)
