@@ -33,6 +33,7 @@
  *                                                               *
  *                                                               *
  * Note: This lexer has been taken from the ExprTk Library.      *
+ * PS: It has been customed by achazal                           *
  *                                                               *
  *****************************************************************
 */

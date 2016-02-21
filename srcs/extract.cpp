@@ -46,6 +46,8 @@ struct parse_function_definition_impl : public lexertk::parser_helper
 
    bool process(std::string& func_def, function_definition& fd)
    {
+      int sign = 0;
+
       /*                    Initialize lexel                   */
       if (!init(func_def))
          return false;
@@ -66,9 +68,21 @@ struct parse_function_definition_impl : public lexertk::parser_helper
       if (!token_is(token_t::e_lbracket))
          return false;
 
+      /*                  If we see have minus                 */
+      if (token_is(token_t::e_sub))
+      /*                        We save it                     */
+         sign = -1;
+      /*                Else if we see have minus              */
+      else if (token_is(token_t::e_add))
+      /*                        We save it                     */
+         sign = 1;
       /*                   Containing a value                  */
       if (!token_is_then_assign(token_t::e_number, fd.var))
             return false;
+      if (sign == 1)
+         fd.var = "+" + fd.var;
+      else if (sign == 1)
+         fd.var = "-" + fd.var;
 
       /*                 With closd brackets                   */
       if (!token_is(token_t::e_rbracket))
@@ -77,7 +91,7 @@ struct parse_function_definition_impl : public lexertk::parser_helper
       /*       In that case, the line must be finised          */
       if (func_def[current_token().position - 1] == '\n')
          return (finish_line(func_def));
-      
+
       return false;
    }
 };

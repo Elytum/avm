@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <climits>
 
 static constexpr unsigned long long basis = 14695981039346656037ULL; 
 static constexpr unsigned long long prime = 1099511628211ULL;
@@ -25,7 +26,7 @@ unsigned long long hash_rt(const char* str)
     return hash;
 }
 
-int			get_int(const std::string &parameter)
+int			get_int(const std::string &parameter, const int &min, const int &max)
 {
 	long int	value;
 	char		*pos;
@@ -39,34 +40,44 @@ int			get_int(const std::string &parameter)
 	else
 		value = strtol(parameter.c_str(), &pos, 10);
 	return (value);
+	(void)min;
+	(void)max;
 }
 
-bool	add_arguments(std::string &code, const std::string &type, const std::string &parameter)
+bool		add_arguments(std::string &code, const std::string &type, const std::string &parameter)
 {
-	std::cout << "\t\tParameter: " << parameter << std::endl;
+	int		v;
+	char	*ptr;
+
 	if (type.empty() || parameter.empty())
 		return (false);
 	switch (hash_rt(type.c_str()))
 	{
 		case hash("int8"):
 		{
-			int v = (char)get_int(parameter);
-			std::cout << "Value: " << v << std::endl;
+			v = get_int(parameter, CHAR_MIN, CHAR_MAX);
+			ptr = reinterpret_cast<char *>(&v); 
+			// std::cout << "Value: " << v << std::endl;
 			code.push_back(INT8);
+			code.append(ptr, 1);
 			break ;
 		}
-		case hash("int16"):
+		case hash("short int"):
 		{
-			int v = (char)get_int(parameter);
-			std::cout << "Value: " << v << std::endl;
+			v = get_int(parameter, SHRT_MIN, SHRT_MAX);
+			ptr = reinterpret_cast<char *>(&v); 
+			// std::cout << "Value: " << v << std::endl;
 			code.push_back(INT16);
+			code.append(ptr, 2);
 			break ;
 		}
 		case hash("int32"):
 		{
-			int v = (char)get_int(parameter);
-			std::cout << "Value: " << v << std::endl;
+			v = get_int(parameter, INT_MIN, INT_MAX);
+			ptr = reinterpret_cast<char *>(&v); 
+			// std::cout << "Value: " << v << std::endl;
 			code.push_back(INT32);
+			code.append(ptr, 4);
 			break ;
 		}
 		case hash("float"):
