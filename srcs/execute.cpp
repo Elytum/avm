@@ -1,50 +1,92 @@
 #include <avm.hpp>
 #include <iostream>
+#include <string.h>
 
-bool		get_value(const std::string &code, size_t &i, char &type, long int &value)
+
+#include <avm.hpp>
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <climits>
+#include <cfloat>
+
+#include <IOperand.hpp>
+#include <Factory.hpp>
+
+double				get_double(const char *parameter, size_t &i, const double &min, const double &max)
 {
-	const std::string ptr = code.substr(i + 1);
+	double		value;
+	char		*pos;
+	char		sign;
+
+	if (*parameter == '+' && parameter[1] >= '0' && parameter[1] <= '9')
+	{
+		sign = 1;
+		++parameter;
+	}
+	else if (*parameter == '-' && parameter[1] >= '0' && parameter[1] <= '9')
+	{
+		sign = -1;
+		++parameter;
+	}
+	else
+		sign = 0;
+	if (*parameter == '0')
+	{
+		if (parameter[1] == 'b')
+			value = strtol(parameter + 2, &pos, 2);
+		else if (parameter[1] == 'x')
+			value = strtol(parameter + 2, &pos, 16);
+		else
+			value = strtol(parameter + 1, &pos, 8);
+	}
+	else
+		value = strtod(parameter, &pos);
+	i += strlen(parameter) + (sign != 0) + 1;
+	if (sign == -1)
+		return (-value);
+	return (value);
+	(void)min;
+	(void)max;
+}
+
+bool		get_value(const std::string &code, size_t &i, char &type, double &value)
+{
+	double		min = 0;
+	double		max = 0;
 
 	type = code[i++];
 	if (type == INT8)
-	{
-		value = *reinterpret_cast<const char *>(ptr.c_str());
-		++i;
-	}
+		value = get_double(code.c_str() + i, i, min, max);
 	else if (type == INT16)
-	{
-		value = *reinterpret_cast<const short int *>(ptr.c_str());
-		i += 2;
-	}
+		value = get_double(code.c_str() + i, i, min, max);
 	else if (type == INT32)
-	{
-		value = *reinterpret_cast<const int *>(ptr.c_str());
-		i += 4;
-	}
+		value = get_double(code.c_str() + i, i, min, max);
 	else if (type == FLOAT)
-	{
-		value = *reinterpret_cast<const float *>(ptr.c_str());
-		float test = *reinterpret_cast<const float *>(ptr.c_str());
-		std::cout << "Value: " << test << std::endl;
-		i += 4;
-	}
+		value = get_double(code.c_str() + i, i, min, max);
 	else if (type == DOUBLE)
-	{
-		value = *reinterpret_cast<const double *>(ptr.c_str());
-		double test = *reinterpret_cast<const double *>(ptr.c_str());
-		std::cout << "Value: " << test << std::endl;
-		i += 8;
-	}
+		value = get_double(code.c_str() + i, i, min, max);
 	else
 		return (false);
 	return (true);
+}
+
+#include <sstream>
+namespace patch
+{
+    template < typename T > std::string to_string( const T& n )
+    {
+        std::ostringstream stm ;
+        stm << n ;
+        return stm.str() ;
+    }
 }
 
 bool			execute(const std::string &code)
 {
 	size_t		i = 0;
 	char		type;
-	long int	value;
+	double		value;
 
 	while (i < code.size())
 	{
@@ -54,6 +96,7 @@ bool			execute(const std::string &code)
 			{
 				++i;
 				get_value(code, i, type, value);
+				Factory::instance()->createOperand(INT8, patch::to_string(value));
 
 				std::cout << "PUSH " << value << std::endl;
 				break ;

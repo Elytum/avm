@@ -81,7 +81,7 @@ struct parse_function_definition_impl : public lexertk::parser_helper
             return false;
       if (sign == 1)
          fd.var = "+" + fd.var;
-      else if (sign == 1)
+      else if (sign == -1)
          fd.var = "-" + fd.var;
 
       /*                 With closd brackets                   */

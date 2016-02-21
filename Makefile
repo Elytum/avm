@@ -23,10 +23,12 @@ FILES	=	main.cpp					\
 			get_file_contents.cpp		\
 			put_file_contents.cpp		\
 			last_edit.cpp				\
+			must/Factory.cpp			\
+			must/Int8.cpp			\
 			exceptions/syntax.cpp		\
 			exceptions/invalid_file.cpp
 
-INC		=	-I ./includes -I ./srcs/exceptions -I ./libs
+INC		=	-I ./includes -I ./srcs/exceptions -I ./libs -I ./srcs/must
 CCFLAGS	=	-std=c++11 -Wall -Wextra -Werror -g
 
 SRCS	=	$(addprefix srcs/, $(FILES))

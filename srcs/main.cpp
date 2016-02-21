@@ -22,7 +22,7 @@ std::string    handle_code(const std::string &file_path)
    const std::string    name = file_path.substr(0, file_path.rfind("."));
    const std::string    out = name + ".compiled";
 
-   if (last_edit(out) < last_edit(file_path))
+   if (1 == 1 || last_edit(out) < last_edit(file_path))
    {
       std::cout << "Recompiling" << std::endl;
       try {
