@@ -5,7 +5,8 @@
 # include <sstream>			// std::ostringstream
 # include <stdlib.h>		// atof
 # include <math.h>			// fmod
-
+# include <Errors.hpp>		// errors
+# include <cfenv>			// std::except
 
 namespace patch
 {
@@ -34,7 +35,7 @@ private:
 
 public:
 
-	Operand<T>( T value, eOperandType type):_value(value), _type(type), _str(patch::to_string(_value))
+	Operand<T>( T value, eOperandType type):_value(value), _type(type), _str(std::to_string(_value))
 	{
 	}
 
@@ -61,42 +62,80 @@ public:
 	virtual IOperand const * operator+( IOperand const & rhs ) const
 	{
 		eOperandType type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		return Factory::instance()->createOperand(type, patch::to_string(static_cast<const double>(this->_value) + atof(rhs.toString().c_str())));
+		double			value;
+
+		std::feclearexcept(FE_OVERFLOW);
+		std::feclearexcept(FE_UNDERFLOW);
+		value = this->_value + atof(rhs.toString().c_str());
+		if (std::fetestexcept(FE_UNDERFLOW))
+			throw Underflow();
+		else if (std::fetestexcept(FE_OVERFLOW))
+			throw Overflow();
+		return Factory::instance()->createOperand(type, patch::to_string(value));
 	}
 	
 	virtual IOperand const * operator-( IOperand const & rhs ) const
 	{
-		eOperandType type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		return Factory::instance()->createOperand(type, patch::to_string(this->_value - atof(rhs.toString().c_str())));
+		eOperandType	type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
+		double			value;
+
+		std::feclearexcept(FE_OVERFLOW);
+		std::feclearexcept(FE_UNDERFLOW);
+		value = this->_value - atof(rhs.toString().c_str());
+		if (std::fetestexcept(FE_UNDERFLOW))
+			throw Underflow();
+		else if (std::fetestexcept(FE_OVERFLOW))
+			throw Overflow();
+		return Factory::instance()->createOperand(type, patch::to_string(value));
 	}
 
 	virtual IOperand const * operator*( IOperand const & rhs ) const
 	{
-		eOperandType type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		return Factory::instance()->createOperand(type, patch::to_string(this->_value * atof(rhs.toString().c_str())));
+		eOperandType	type	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
+		double			value;
+		
+		std::feclearexcept(FE_OVERFLOW);
+		std::feclearexcept(FE_UNDERFLOW);
+		value = this->_value * atof(rhs.toString().c_str());
+		if (std::fetestexcept(FE_UNDERFLOW))
+			throw Underflow();
+		else if (std::fetestexcept(FE_OVERFLOW))
+			throw Overflow();
+		return Factory::instance()->createOperand(type, patch::to_string(value));
 	}
 	
 	virtual IOperand const * operator/( IOperand const & rhs ) const
 	{
-		eOperandType 	type 	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		double 			nb2		= atof(rhs.toString().c_str());
+		eOperandType	type	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
+		double			value	= atof(rhs.toString().c_str());
 
-		// if (nb2 == 0)
-		// 	throw DivisionError();
-		return Factory::instance()->createOperand(type, patch::to_string(this->_value / nb2));
+		if (value == 0)
+			throw Division();
+		std::feclearexcept(FE_OVERFLOW);
+		std::feclearexcept(FE_UNDERFLOW);
+		value = this->_value / value;
+		if (std::fetestexcept(FE_UNDERFLOW))
+			throw Underflow();
+		else if (std::fetestexcept(FE_OVERFLOW))
+			throw Overflow();
+		return Factory::instance()->createOperand(type, patch::to_string(value));
 	}
 
 	virtual IOperand const * operator%( IOperand const & rhs ) const
 	{
-		std::string 	result;
-		eOperandType 	type 	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		double 			nb2		= atof(rhs.toString().c_str());
+		eOperandType	type	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
+		double			value	= atof(rhs.toString().c_str());
 
-		// if (nb2 == 0)
-		// 	throw DivisionError();
-		result = patch::to_string(fmod(this->_value, nb2));
-
-		return Factory::instance()->createOperand(type, result);
+		if (value == 0)
+			throw Division();
+		std::feclearexcept(FE_OVERFLOW);
+		std::feclearexcept(FE_UNDERFLOW);
+		value = fmod(this->_value, value);
+		if (std::fetestexcept(FE_UNDERFLOW))
+			throw Underflow();
+		else if (std::fetestexcept(FE_OVERFLOW))
+			throw Overflow();
+		return Factory::instance()->createOperand(type, patch::to_string(value));
 	}
 
 	virtual std::string const & toString( void ) const

@@ -3,5 +3,7 @@
 
 # include <Overflow.hpp>
 # include <Underflow.hpp>
+# include <Division.hpp>
+# include <Modulo.hpp>
 
 #endif

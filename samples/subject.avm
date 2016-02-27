@@ -2,8 +2,7 @@
 ; sample.avm -
 ; -------------
 
-push int8(+010)
-push int8(+010)
+push double(100)
+push double(100)
 add
-print
 exit

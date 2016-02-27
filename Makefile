@@ -31,6 +31,8 @@ FILES	=	main.cpp					\
 			must/Double.cpp				\
 			errors/Overflow.cpp			\
 			errors/Underflow.cpp		\
+			errors/Division.cpp			\
+			errors/Modulo.cpp			\
 			exceptions/syntax.cpp		\
 			exceptions/invalid_file.cpp
 
