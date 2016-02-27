@@ -16,5 +16,7 @@ std::string   get_file_contents(const char *filename)
     in.close();
     return(contents);
   }
-  throw(InvalidFile());
+  return ("\n");
+  // else
+  //   throw InvalidFile();
 }
