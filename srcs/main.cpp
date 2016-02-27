@@ -24,7 +24,6 @@ std::string    handle_code(const std::string &file_path)
 
    if (1 == 1 || last_edit(out) < last_edit(file_path))
    {
-      std::cout << "Recompiling" << std::endl;
       try {
          const std::string content = get_file_contents(file_path.c_str());
          const std::string compiled = compile(content);

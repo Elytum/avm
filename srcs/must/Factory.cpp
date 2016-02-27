@@ -70,10 +70,9 @@ Factory & 	Factory::operator = (Factory const & rhs)
 		*this = rhs;
 	return (*this);
 }
-#include <iostream>
+
 IOperand const * Factory::createOperand( eOperandType type, std::string const & value ) const
 {
-	std::cout << "Value: " << value << std::endl;
 	if (type >= MAX_TYPE)
 		exit(0);
 	return ((this->*(_v[type]))(value));

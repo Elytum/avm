@@ -24,14 +24,12 @@ bool			execute(const std::string &code)
 	IOperand const *				a;
 	IOperand const *				b;
 
-	(void)stack;
 	types[INT8] = INT8;
 	types[INT16] = INT16;
 	types[INT32] = INT32;
 	types[FLOAT] = FLOAT;
 	types[DOUBLE] = DOUBLE;
 
-	std::cout << "\tEXECUTING" << std::endl;
 	while (i < code.size())
 	{
 		switch (code[i * sizeof(functions)])
@@ -53,6 +51,9 @@ bool			execute(const std::string &code)
 			case DUMP:
 			{
 				++i;
+				for (std::vector<IOperand const *>::iterator it = stack.begin(); it != stack.end(); ++it) {
+					std::cout << (*it)->toString() << std::endl;
+				}
 				break ;
 			}
 			case ASSERT:
@@ -72,7 +73,6 @@ bool			execute(const std::string &code)
 				stack.pop_back();
 				b = stack.back();
 				stack.pop_back();
-				std::cout << "'" << a->toString() << "' +'"  << b->toString() << "'"  << std::endl;
 				stack.push_back(*a + *b);
 				delete a; delete b;
 				break ;
