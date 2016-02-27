@@ -9,6 +9,8 @@
 # include <Print.hpp>
 # include <Type.hpp>
 # include <Pop.hpp>
+# include <InvalidFile.hpp>
+# include <Syntax.hpp>
 # include <Instruction.hpp>
 
 #endif

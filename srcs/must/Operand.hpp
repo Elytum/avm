@@ -27,7 +27,7 @@ private:
 	
 	T							_value;
 	eOperandType		const	_type;
-	std::string			const	_str;
+	std::string					_str;
 	
 	Operand<T>( void );
 	Operand<T>( Operand<T> const & src );
@@ -37,6 +37,7 @@ public:
 
 	Operand<T>( T value, eOperandType type):_value(value), _type(type), _str(std::to_string(_value))
 	{
+		_str.erase(_str.find_last_not_of('0') + 1, std::string::npos);
 	}
 
 	virtual ~Operand<T>()

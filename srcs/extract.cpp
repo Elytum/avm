@@ -48,7 +48,7 @@ struct parse_function_definition_impl : public lexertk::parser_helper
    {
       int sign = 0;
 
-      /*                    Initialize lexel                   */
+      /*                    Initialize lexer                   */
       if (!init(func_def))
          return false;
 
@@ -56,7 +56,7 @@ struct parse_function_definition_impl : public lexertk::parser_helper
       if (!token_is_then_assign(token_t::e_symbol, fd.function))
          return false;
 
-      /*    If function doesn't take arugument, accept it      */
+      /*    If function doesn't take argument, accept it       */
       if (func_def[current_token().position - 1] == '\n')
          return (finish_line(func_def));
 
@@ -72,7 +72,7 @@ struct parse_function_definition_impl : public lexertk::parser_helper
       if (token_is(token_t::e_sub))
       /*                        We save it                     */
          sign = -1;
-      /*                Else if we see have minus              */
+      /*                Else if we see have plus               */
       else if (token_is(token_t::e_add))
       /*                        We save it                     */
          sign = 1;
@@ -84,14 +84,13 @@ struct parse_function_definition_impl : public lexertk::parser_helper
       else if (sign == -1)
          fd.var = "-" + fd.var;
 
-      /*                 With closd brackets                   */
+      /*                 With closed brackets                  */
       if (!token_is(token_t::e_rbracket))
          return false;
 
       /*       In that case, the line must be finised          */
       if (func_def[current_token().position - 1] == '\n')
          return (finish_line(func_def));
-
       return false;
    }
 };
@@ -114,9 +113,9 @@ std::string extract(const std::string &program, const compiler &compilator)
    function_definition     fd;
    std::string             residual = program;
    std::string             code;
-
-   int line_count = 0;
-   int new_line_pos;
+   int                     line_count = 0;
+   int                     new_line_pos;
+   bool                    valid = true;
 
    /*                    As long as there is lines to compile                       */
    do
@@ -132,15 +131,19 @@ std::string extract(const std::string &program, const compiler &compilator)
          if ((new_line_pos = residual.find("\n")) == -1)
          {
    /*          If there is not, report the error on the remaining line              */
-            printf("Line %i : Error : [%s]\n", line_count, residual.c_str());
+            std::cerr << "Line " << line_count << " : Error : '" << residual.c_str() << "'" << std::endl;
+   /*                       Rembember that the file is invalid                      */
+            valid = false;
    /*                        Then stop the compilation                              */
             break ;
          }
 
    /*                      Else Report the error on only this line                  */
-         printf("Line %i : Error : [%s]\n", line_count, residual.substr(0, new_line_pos).c_str());
+         std::cerr << "Line " << line_count << " : Error : '" << residual.substr(0, new_line_pos).c_str() << "'" << std::endl;
    /*                               And erase this line                             */
          residual.erase(0, new_line_pos + 1);
+   /*                       Rembember that the file is invalid                      */
+         valid = false;
    /*                         If there is nothing more to compile                   */
          if (residual.empty())
    /*                              Stop the compilation                             */
@@ -150,6 +153,8 @@ std::string extract(const std::string &program, const compiler &compilator)
       ++line_count;
    }
    while (!residual.empty());
+   if (valid == false)
+      exit(1);
    /*                             Return the compiled code                          */
    return (code);
 }

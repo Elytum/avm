@@ -1,3 +1,3 @@
 #include <Type.hpp>
 
-const char *Type::what() const throw () { return ("Error : Type"); }
+const char *Type::what() const throw () { return ("Error : Unknown type"); }

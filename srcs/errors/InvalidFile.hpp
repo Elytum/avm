@@ -1,5 +1,5 @@
-#ifndef INVALID_FILE_HPP
-#define INVALID_FILE_HPP
+#ifndef INVALIDFILE_HPP
+#define INVALIDFILE_HPP
 
 #include <exception>
 

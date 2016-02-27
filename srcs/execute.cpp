@@ -72,8 +72,6 @@ bool			execute(const std::string &code)
 					a = Factory::instance()->createOperand(types[(unsigned int)code[i]], code.substr(i + 1, code.size() - i - 1));
 					sa = a->toString();
 					sb = stack.back()->toString();
-					sa.erase(sa.find_last_not_of('0') + 1, std::string::npos);
-					sb.erase(sb.find_last_not_of('0') + 1, std::string::npos);
 					if (sa != sb)
 						throw WrongAssert();
 					delete a;

@@ -38,8 +38,8 @@ FILES	=	main.cpp					\
 			errors/Type.cpp				\
 			errors/Pop.cpp				\
 			errors/Instruction.cpp		\
-			exceptions/syntax.cpp		\
-			exceptions/invalid_file.cpp
+			errors/Syntax.cpp			\
+			errors/InvalidFile.cpp
 
 INC		=	-I ./includes -I ./srcs/exceptions -I ./srcs/errors -I ./libs -I ./srcs/must
 CCFLAGS	=	-std=c++11 -Wall -Wextra -Werror -g
