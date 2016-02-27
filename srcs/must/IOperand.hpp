@@ -1,12 +1,15 @@
 #ifndef IOPERAND_HPP
 # define IOPERAND_HPP
 
-enum eOperandType : char { 
-	INT8,
-	INT16,
-	INT32,
-	FLOAT,
-	DOUBLE
+#include <string>
+
+enum eOperandType : unsigned char { 
+	INT8 = 0,
+	INT16 = 1,
+	INT32 = 2,
+	FLOAT = 3,
+	DOUBLE = 4,
+	MAX_TYPE
 };
 
 class IOperand {

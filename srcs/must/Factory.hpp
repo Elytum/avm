@@ -1,12 +1,7 @@
 #ifndef FACTORY_HPP
 # define FACTORY_HPP
-# include <string>
-// # include <iostream>
-# include <vector>
-// # include "UnderflowError.class.hpp"
-// # include "OverflowError.class.hpp"
-# include <IOperand.hpp>
 
+# include <IOperand.hpp>
 
 class Factory;
 
@@ -24,13 +19,12 @@ class Factory
 		static Factory* instance();
 
 	private:
-		std::vector<create>		_v;
-
+		create	_v[5];
 		IOperand const * createInt8( std::string const & value ) const;
-		// IOperand const * createInt16( std::string const & value ) const;
-		// IOperand const * createInt32( std::string const & value ) const;
-		// IOperand const * createFloat( std::string const & value ) const;
-		// IOperand const * createDouble( std::string const & value ) const;
+		IOperand const * createInt16( std::string const & value ) const;
+		IOperand const * createInt32( std::string const & value ) const;
+		IOperand const * createFloat( std::string const & value ) const;
+		IOperand const * createDouble( std::string const & value ) const;
 	};
 
 #endif

@@ -1,15 +1,12 @@
 #ifndef OPERAND_TPP
 # define OPERAND_TPP
-# include "IOperand.hpp"
-# include "Factory.hpp"
-//# include "DivisionError.class.hpp"
-# include <iostream>
-# include <sstream>
-# include <typeinfo>
-# include <math.h>
 
-#include <string>
-#include <sstream>
+# include <Factory.hpp>		// createOperand
+# include <sstream>			// std::ostringstream
+# include <stdlib.h>		// atof
+# include <math.h>			// fmod
+
+
 namespace patch
 {
     template < typename T > std::string to_string( const T& n )
@@ -19,6 +16,7 @@ namespace patch
         return stm.str() ;
     }
 }
+
 
 template<typename T>
 class	Operand : public IOperand
@@ -35,7 +33,7 @@ private:
 	Operand<T> & operator = ( Operand<T> const & rhs );
 
 public:
-	
+
 	Operand<T>( T value, eOperandType type):_value(value), _type(type), _str(patch::to_string(_value))
 	{
 	}
@@ -63,25 +61,25 @@ public:
 	virtual IOperand const * operator+( IOperand const & rhs ) const
 	{
 		eOperandType type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		return Factory::instance()->createOperand(type, patch::to_string(static_cast<const double>(this->_value) + std::stod(rhs.toString())));
+		return Factory::instance()->createOperand(type, patch::to_string(static_cast<const double>(this->_value) + atof(rhs.toString().c_str())));
 	}
 	
 	virtual IOperand const * operator-( IOperand const & rhs ) const
 	{
 		eOperandType type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		return Factory::instance()->createOperand(type, patch::to_string(this->_value - stod(rhs.toString())));
+		return Factory::instance()->createOperand(type, patch::to_string(this->_value - atof(rhs.toString().c_str())));
 	}
 
 	virtual IOperand const * operator*( IOperand const & rhs ) const
 	{
 		eOperandType type = (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		return Factory::instance()->createOperand(type, patch::to_string(this->_value * stod(rhs.toString())));
+		return Factory::instance()->createOperand(type, patch::to_string(this->_value * atof(rhs.toString().c_str())));
 	}
 	
 	virtual IOperand const * operator/( IOperand const & rhs ) const
 	{
 		eOperandType 	type 	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		double 			nb2		= stod(rhs.toString());
+		double 			nb2		= atof(rhs.toString().c_str());
 
 		// if (nb2 == 0)
 		// 	throw DivisionError();
@@ -92,10 +90,10 @@ public:
 	{
 		std::string 	result;
 		eOperandType 	type 	= (this->getPrecision() < rhs.getPrecision()) ? rhs.getType() : this->_type;
-		double 			nb2		= stod(rhs.toString());
+		double 			nb2		= atof(rhs.toString().c_str());
 
-		if (nb2 == 0)
-			throw DivisionError();
+		// if (nb2 == 0)
+		// 	throw DivisionError();
 		result = patch::to_string(fmod(this->_value, nb2));
 
 		return Factory::instance()->createOperand(type, result);
@@ -114,5 +112,11 @@ std::ostream & 	operator << (std::ostream & o, Operand<T> const & op)
 	o << op.toString();
 	return (o);
 }
+
+#include <Int8.hpp>
+#include <Int16.hpp>
+#include <Int32.hpp>
+#include <Float.hpp>
+#include <Double.hpp>
 
 #endif

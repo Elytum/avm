@@ -12,82 +12,26 @@
 
 #include <IOperand.hpp>
 #include <Factory.hpp>
+#include <vector>
 
-double				get_double(const char *parameter, size_t &i, const double &min, const double &max)
-{
-	double		value;
-	char		*pos;
-	char		sign;
-
-	if (*parameter == '+' && parameter[1] >= '0' && parameter[1] <= '9')
-	{
-		sign = 1;
-		++parameter;
-	}
-	else if (*parameter == '-' && parameter[1] >= '0' && parameter[1] <= '9')
-	{
-		sign = -1;
-		++parameter;
-	}
-	else
-		sign = 0;
-	if (*parameter == '0')
-	{
-		if (parameter[1] == 'b')
-			value = strtol(parameter + 2, &pos, 2);
-		else if (parameter[1] == 'x')
-			value = strtol(parameter + 2, &pos, 16);
-		else
-			value = strtol(parameter + 1, &pos, 8);
-	}
-	else
-		value = strtod(parameter, &pos);
-	i += strlen(parameter) + (sign != 0) + 1;
-	if (sign == -1)
-		return (-value);
-	return (value);
-	(void)min;
-	(void)max;
-}
-
-bool		get_value(const std::string &code, size_t &i, char &type, double &value)
-{
-	double		min = 0;
-	double		max = 0;
-
-	type = code[i++];
-	if (type == INT8)
-		value = get_double(code.c_str() + i, i, min, max);
-	else if (type == INT16)
-		value = get_double(code.c_str() + i, i, min, max);
-	else if (type == INT32)
-		value = get_double(code.c_str() + i, i, min, max);
-	else if (type == FLOAT)
-		value = get_double(code.c_str() + i, i, min, max);
-	else if (type == DOUBLE)
-		value = get_double(code.c_str() + i, i, min, max);
-	else
-		return (false);
-	return (true);
-}
-
-#include <sstream>
-namespace patch
-{
-    template < typename T > std::string to_string( const T& n )
-    {
-        std::ostringstream stm ;
-        stm << n ;
-        return stm.str() ;
-    }
-}
+#include <Int8.hpp>
 
 bool			execute(const std::string &code)
 {
-	size_t		i = 0;
-	char		type;
-	double		value;
+	size_t							i = 0;
+	eOperandType					types[5];
+	std::vector<IOperand const *>	stack;
+	IOperand const *				a;
+	IOperand const *				b;
 
+	(void)stack;
+	types[INT8] = INT8;
+	types[INT16] = INT16;
+	types[INT32] = INT32;
+	types[FLOAT] = FLOAT;
+	types[DOUBLE] = DOUBLE;
+
+	std::cout << "\tEXECUTING" << std::endl;
 	while (i < code.size())
 	{
 		switch (code[i * sizeof(functions)])
@@ -95,77 +39,109 @@ bool			execute(const std::string &code)
 			case PUSH:
 			{
 				++i;
-				get_value(code, i, type, value);
-				Factory::instance()->createOperand(INT8, patch::to_string(value));
-
-				std::cout << "PUSH " << value << std::endl;
+				if (static_cast<unsigned int>(code[i]) >= MAX_TYPE)
+					exit (0);
+				stack.push_back(Factory::instance()->createOperand(types[(unsigned int)code[i]], code.substr(i + 1, code.size() - i - 1)));
+				i += 1 + strlen(code.c_str() + i + 1) + 1;
 				break ;
 			}
 			case POP:
 			{
 				++i;
-				std::cout << "POP" << std::endl;
 				break ;
 			}
 			case DUMP:
 			{
 				++i;
-				std::cout << "DUMP" << std::endl;
 				break ;
 			}
 			case ASSERT:
 			{
 				++i;
-				get_value(code, i, type, value);
-
-				std::cout << "ASSERT " << value << std::endl;
+				if (static_cast<unsigned int>(code[i]) >= MAX_TYPE)
+					exit (0);
+				a = Factory::instance()->createOperand(types[(unsigned int)code[i]], code.substr(i + 1, code.size() - i - 1));
+				// if ()
+				i += 1 + strlen(code.c_str() + i + 1) + 1;
 				break ;
 			}
 			case ADD:
 			{
 				++i;
-				std::cout << "ADD" << std::endl;
+				a = stack.back();
+				stack.pop_back();
+				b = stack.back();
+				stack.pop_back();
+				std::cout << "'" << a->toString() << "' +'"  << b->toString() << "'"  << std::endl;
+				stack.push_back(*a + *b);
+				delete a; delete b;
 				break ;
 			}
 			case SUB:
 			{
 				++i;
-				std::cout << "SUB" << std::endl;
+				a = stack.back();
+				stack.pop_back();
+				b = stack.back();
+				stack.pop_back();
+				stack.push_back(*a - *b);
+				delete a; delete b;
 				break ;
 			}
 			case MUL:
 			{
 				++i;
-				std::cout << "MUL" << std::endl;
+				a = stack.back();
+				stack.pop_back();
+				b = stack.back();
+				stack.pop_back();
+				stack.push_back(*a * *b);
+				delete a; delete b;
 				break ;
 			}
 			case DIV:
 			{
 				++i;
-				std::cout << "DIV" << std::endl;
+				a = stack.back();
+				stack.pop_back();
+				b = stack.back();
+				stack.pop_back();
+				stack.push_back(*a / *b);
+				delete a; delete b;
 				break ;
 			}
 			case MOD:
 			{
 				++i;
-				std::cout << "MOD" << std::endl;
+				a = stack.back();
+				stack.pop_back();
+				b = stack.back();
+				stack.pop_back();
+				stack.push_back(*a % *b);
+				delete a; delete b;
 				break ;
 			}
 			case PRINT:
 			{
 				++i;
-				std::cout << "PRINT" << std::endl;
+				a = stack.back();
+				if (a->getType() != INT8)
+				{
+					std::cerr << "ERROR NOT INT8" << std::endl;
+					exit(1);
+				}
+				double value = static_cast<Int8 const *>(a)->getValue();
+				std::cout << value << std::endl;
 				break ;
 			}
 			case EXIT:
 			{
 				++i;
-				std::cout << "EXIT" << std::endl;
 				break ;
 			}
 			default:
 			{
-				std::cerr << "Abort, unknown instruction" << std::endl;
+				std::cerr << "Abort, illegal instruction" << std::endl;
 				return (false);
 			}
 		}

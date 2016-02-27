@@ -1,9 +1,9 @@
-#ifndef INT8_CLASS_HPP
-# define INT8_CLASS_HPP
+#ifndef INT8_HPP
+# define INT8_HPP
 
 # include <Operand.hpp>
 
-class Int8: public Operand<int8_t>
+class Int8: public Operand <int8_t>
 {
 	public:
 		Int8(int8_t value);

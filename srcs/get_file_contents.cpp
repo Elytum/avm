@@ -3,7 +3,7 @@
 #include <cerrno>
 #include <invalid_file.hpp>
 
-std::string get_file_contents(const char *filename)
+std::string   get_file_contents(const char *filename)
 {
   std::ifstream in(filename, std::ios::in | std::ios::binary);
   if (in)

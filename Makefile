@@ -24,11 +24,17 @@ FILES	=	main.cpp					\
 			put_file_contents.cpp		\
 			last_edit.cpp				\
 			must/Factory.cpp			\
-			must/Int8.cpp			\
+			must/Int8.cpp				\
+			must/Int16.cpp				\
+			must/Int32.cpp				\
+			must/Float.cpp				\
+			must/Double.cpp				\
+			errors/Overflow.cpp			\
+			errors/Underflow.cpp		\
 			exceptions/syntax.cpp		\
 			exceptions/invalid_file.cpp
 
-INC		=	-I ./includes -I ./srcs/exceptions -I ./libs -I ./srcs/must
+INC		=	-I ./includes -I ./srcs/exceptions -I ./srcs/errors -I ./libs -I ./srcs/must
 CCFLAGS	=	-std=c++11 -Wall -Wextra -Werror -g
 
 SRCS	=	$(addprefix srcs/, $(FILES))

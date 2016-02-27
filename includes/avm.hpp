@@ -8,19 +8,20 @@
 
 typedef bool(*compiler)(std::string &code, const std::string &function, const std::string &type, const std::string &parameter);
 
-enum functions : char
+enum functions : unsigned char
 {
-   PUSH,
-   POP,
-   DUMP,
-   ASSERT,
-   ADD,
-   SUB,
-   MUL,
-   DIV,
-   MOD,
-   PRINT,
-   EXIT
+   PUSH = 0,
+   POP = 1,
+   DUMP = 2,
+   ASSERT = 3,
+   ADD = 4,
+   SUB = 5,
+   MUL = 6,
+   DIV = 7,
+   MOD = 8,
+   PRINT = 9,
+   EXIT = 10,
+   MAX_FUNCTION
 };
 
 std::string		compile(const std::string &program);
