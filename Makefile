@@ -33,6 +33,11 @@ FILES	=	main.cpp					\
 			errors/Underflow.cpp		\
 			errors/Division.cpp			\
 			errors/Modulo.cpp			\
+			errors/WrongAssert.cpp		\
+			errors/Print.cpp			\
+			errors/Type.cpp				\
+			errors/Pop.cpp				\
+			errors/Instruction.cpp		\
 			exceptions/syntax.cpp		\
 			exceptions/invalid_file.cpp
 

@@ -40,7 +40,7 @@ bool		add_arguments(std::string &code, const std::string &type, const std::strin
 			code.push_back(INT8);
 			break ;
 		}
-		case hash("short int"):
+		case hash("int16"):
 		{
 			code.push_back(INT16);
 			break ;
@@ -59,6 +59,11 @@ bool		add_arguments(std::string &code, const std::string &type, const std::strin
 		{
 			code.push_back(DOUBLE);
 			break ;
+		}
+		default:
+		{
+			std::cerr << "Unknown type" << std::endl;
+			exit(0);
 		}
 	}
 	code.append(parameter);

@@ -1685,7 +1685,6 @@ namespace lexertk
       inline bool token_is(const token_t::token_type& ttype,
                            const bool advance_token = true)
       {
-         // printf("Token is: %i, [%s]\n", current_token_.type, current_token_.value.c_str());
          if (current_token_.type != ttype)
          {
             return false;

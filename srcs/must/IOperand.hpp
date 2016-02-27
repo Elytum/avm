@@ -9,7 +9,7 @@ enum eOperandType : unsigned char {
 	INT32 = 2,
 	FLOAT = 3,
 	DOUBLE = 4,
-	MAX_TYPE
+	MAX_TYPE = 5
 };
 
 class IOperand {
