@@ -9,12 +9,13 @@ LexicalType::LexicalType() : _line("") {
 LexicalType::~LexicalType() {
 }
 
-LexicalType::LexicalType(LexicalType const & src) {
-
+LexicalType::LexicalType(LexicalType const & src) : _line(src._line) {
 }
 
-LexicalType::LexicalType& operator=(LexicalType const & rhs) {
-
+LexicalType& LexicalType::operator=(LexicalType const & rhs) {
+	if (this != &rhs)
+		*this = rhs;
+	return (*this);
 }
 
 const char * LexicalType::what() const throw ()

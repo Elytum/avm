@@ -9,12 +9,13 @@ MathError::MathError() : _operation("") {
 MathError::~MathError() {
 }
 
-MathError::MathError(MathError const & src) {
-
+MathError::MathError(MathError const & src) : _operation(src._operation) {
 }
 
-MathError::MathError& operator=(MathError const & rhs) {
-
+MathError& MathError::operator=(MathError const & rhs) {
+	if (this != &rhs)
+		*this = rhs;
+	return (*this);
 }
 
 const char * MathError::what() const throw ()

@@ -1,19 +1,19 @@
 #include <AssertEmpty.hpp>
 
 AssertEmpty::AssertEmpty() {
-
 }
 
 AssertEmpty::~AssertEmpty() {
-
 }
 
 AssertEmpty::AssertEmpty(AssertEmpty const & src) {
-
+	*this = src;
 }
 
-AssertEmpty::AssertEmpty& operator=(AssertEmpty const & rhs) {
-
+AssertEmpty& AssertEmpty::operator=(AssertEmpty const & rhs) {
+	if (this != &rhs)
+		*this = rhs;
+	return (*this);
 }
 
 

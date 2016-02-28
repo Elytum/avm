@@ -7,15 +7,15 @@ ExtraArgument::ExtraArgument() : _funct(""), _arg("") {
 }
 
 ExtraArgument::~ExtraArgument() {
-
 }
 
-ExtraArgument::ExtraArgument(ExtraArgument const & src) {
-
+ExtraArgument::ExtraArgument(ExtraArgument const & src) : _funct(src._funct), _arg(src._arg) {
 }
 
-ExtraArgument::ExtraArgument& operator=(ExtraArgument const & rhs) {
-
+ExtraArgument& ExtraArgument::operator=(ExtraArgument const & rhs) {
+	if (this != &rhs)
+		*this = rhs;
+	return (*this);
 }
 
 const char * ExtraArgument::what() const throw ()

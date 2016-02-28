@@ -120,7 +120,6 @@ void  parse_function_definition(std::string &func_def, function_definition &fd)
 void  compile_function(std::string &code, function_definition &fd, const compiler &compilator)
 {
    compilator(code, fd.function, fd.type, fd.var);
-   fd.clear();
 }
 
 int   countSubstring(const std::string& str, const std::string& sub)
@@ -177,6 +176,7 @@ std::string extract(const std::string &program, const compiler &compilator)
    /*                               And tell the error                              */
          std::cerr << "Line " << get_line(program, residual) << " : " << e.what() << std::endl;
       }
+      fd.clear();
    }
    while (!residual.empty());
    if (valid == false)

@@ -7,15 +7,15 @@ Syntax::Syntax() : _line("") {
 }
 
 Syntax::~Syntax() {
-
 }
 
-Syntax::Syntax(Syntax const & src) {
-
+Syntax::Syntax(Syntax const & src) : _line(src._line) {
 }
 
-Syntax::Syntax& operator=(Syntax const & rhs) {
-
+Syntax& Syntax::operator=(Syntax const & rhs) {
+	if (this != &rhs)
+		*this = rhs;
+	return (*this);
 }
 
 const char * Syntax::what() const throw ()

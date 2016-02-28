@@ -12,12 +12,13 @@ Overflow::Overflow() : _a(0), _b(0), _operation("") {
 Overflow::~Overflow() {
 }
 
-Overflow::Overflow(Overflow const & src) {
-
+Overflow::Overflow(Overflow const & src) : _a(src._a), _b(src._b), _operation(src._operation) {
 }
 
-Overflow::Overflow& operator=(Overflow const & rhs) {
-
+Overflow& Overflow::operator=(Overflow const & rhs) {
+	if (this != &rhs)
+		*this = rhs;
+	return (*this);
 }
 
 const char *Overflow::what() const throw () {
