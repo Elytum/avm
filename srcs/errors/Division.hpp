@@ -4,7 +4,13 @@
 #include <exception>
 
 class Division : public std::exception {
-	virtual const char* what() const throw ();
+	public:
+		Division();
+		~Division();
+		Division(Division const & src);
+		Division& operator=(Division const & rhs);
+	private:
+		virtual const char* what() const throw ();
 };
 
 #endif

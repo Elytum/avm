@@ -4,7 +4,13 @@
 #include <exception>
 
 class Pop : public std::exception {
-	virtual const char* what() const throw ();
+	public:
+		Pop();
+		~Pop();
+		Pop(Pop const & src);
+		Pop& operator=(Pop const & rhs);
+	private:
+		virtual const char* what() const throw ();
 };
 
 #endif

@@ -1,6 +1,8 @@
-push float(1.422)
-push double(1.422)
-push int32(0b101010)
-push int32(0x2a)
-push int32(052)
-push int32(+2)
+;lol
+push
+push int32(3)
+add int32(2)
+assert int32(5)
+dump
+;
+exit

@@ -8,6 +8,10 @@ class Underflow: public std::exception {
 	public:
 		Underflow(const int &a);
 		Underflow(const int &a, const int &b, const std::string &operation);
+		Underflow();
+		~Underflow();
+		Underflow(Underflow const & src);
+		Underflow& operator=(Underflow const & rhs);
 	private:
 		const int			_a;
 		const int			_b;

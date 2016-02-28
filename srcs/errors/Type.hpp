@@ -4,7 +4,13 @@
 #include <exception>
 
 class Type : public std::exception {
-	virtual const char* what() const throw ();
+	public:
+		Type();
+		~Type();
+		Type(Type const & src);
+		Type& operator=(Type const & rhs);
+	private:
+		virtual const char* what() const throw ();
 };
 
 #endif

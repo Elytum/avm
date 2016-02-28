@@ -25,7 +25,7 @@ bool			execute(const std::string &code)
 	IOperand const *				b;
 	std::string						sa;
 	std::string						sb;
-	size_t							line = 1;
+	size_t							id = 1;
 
 	types[INT8] = INT8;
 	types[INT16] = INT16;
@@ -39,6 +39,11 @@ bool			execute(const std::string &code)
 		{
 			switch (code[i * sizeof(functions)])
 			{
+				case NOP:
+				{
+					++i;
+					break ;
+				}
 				case PUSH:
 				{
 					++i;
@@ -51,7 +56,7 @@ bool			execute(const std::string &code)
 				case POP:
 				{
 					++i;
-					if (!stack.size())
+					if (stack.empty())
 						throw Pop();
 					stack.pop_back();
 					break ;
@@ -67,6 +72,8 @@ bool			execute(const std::string &code)
 				case ASSERT:
 				{
 					++i;
+					if (stack.empty())
+						throw AssertEmpty();
 					if (static_cast<unsigned int>(code[i]) >= MAX_TYPE)
 						throw Type();
 					a = Factory::instance()->createOperand(types[(unsigned int)code[i]], code.substr(i + 1, code.size() - i - 1));
@@ -81,6 +88,8 @@ bool			execute(const std::string &code)
 				case ADD:
 				{
 					++i;
+					if (stack.size() < 2)
+						throw MathError("+");
 					a = stack.back();
 					stack.pop_back();
 					b = stack.back();
@@ -92,6 +101,8 @@ bool			execute(const std::string &code)
 				case SUB:
 				{
 					++i;
+					if (stack.size() < 2)
+						throw MathError("-");
 					a = stack.back();
 					stack.pop_back();
 					b = stack.back();
@@ -103,6 +114,8 @@ bool			execute(const std::string &code)
 				case MUL:
 				{
 					++i;
+					if (stack.size() < 2)
+						throw MathError("*");
 					a = stack.back();
 					stack.pop_back();
 					b = stack.back();
@@ -114,6 +127,8 @@ bool			execute(const std::string &code)
 				case DIV:
 				{
 					++i;
+					if (stack.size() < 2)
+						throw MathError("/");
 					a = stack.back();
 					stack.pop_back();
 					b = stack.back();
@@ -125,6 +140,8 @@ bool			execute(const std::string &code)
 				case MOD:
 				{
 					++i;
+					if (stack.size() < 2)
+						throw MathError("%");
 					a = stack.back();
 					stack.pop_back();
 					b = stack.back();
@@ -136,6 +153,8 @@ bool			execute(const std::string &code)
 				case PRINT:
 				{
 					++i;
+					if (stack.empty())
+						throw PrintEmpty();
 					a = stack.back();
 					if (a->getType() != INT8)
 						throw Print();
@@ -150,12 +169,12 @@ bool			execute(const std::string &code)
 				default:
 					throw Instruction(code[i * sizeof(functions)]);
 			}
-			++line;
+			++id;
 		}
 	}
 	catch ( const std::exception & e ) 
 	{
-		std::cerr << "Line " << line << " : " << e.what() << std::endl;
+		std::cerr << "Instruction " << id << " : " << e.what() << std::endl;
 	}
 	return (false);
 }

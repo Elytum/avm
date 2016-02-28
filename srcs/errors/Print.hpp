@@ -4,7 +4,13 @@
 #include <exception>
 
 class Print : public std::exception {
-	virtual const char* what() const throw ();
+	public:
+		Print();
+		~Print();
+		Print(Print const & src);
+		Print& operator=(Print const & rhs);
+	private:
+		virtual const char* what() const throw ();
 };
 
 #endif

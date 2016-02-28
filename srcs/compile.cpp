@@ -76,60 +76,89 @@ bool	compilator(std::string &code, const std::string &function, const std::strin
 {
 	switch (hash_rt(function.c_str()))
 	{
+		case hash("nop"):
+		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
+			code.push_back(NOP);
+			break ;
+		}
 		case hash("push"):
 		{
+			if (type.empty() || parameter.empty())
+				throw MissingArgument(function);
 			code.push_back(PUSH);
 			add_arguments(code, type, parameter);
 			break ;
 		}
 		case hash("pop"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(POP);
 			break ;
 		}
 		case hash("dump"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(DUMP);
 			break ;
 		}
 		case hash("assert"):
 		{
+			if (type.empty() || parameter.empty())
+				throw MissingArgument(function);
 			code.push_back(ASSERT);
 			add_arguments(code, type, parameter);
 			break ;
 		}
 		case hash("add"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(ADD);
 			break ;
 		}
 		case hash("sub"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(SUB);
 			break ;
 		}
 		case hash("mul"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(MUL);
 			break ;
 		}
 		case hash("div"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(DIV);
 			break ;
 		}
 		case hash("mod"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(MOD);
 			break ;
 		}
 		case hash("print"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(PRINT);
 			break ;
 		}
 		case hash("exit"):
 		{
+			if (!type.empty())
+				throw ExtraArgument(function, type);
 			code.push_back(EXIT);
 			break ;
 		}

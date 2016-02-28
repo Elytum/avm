@@ -4,7 +4,13 @@
 #include <exception>
 
 class InvalidFile: public std::exception {
-	virtual const char* what() const throw ();
+	public:
+		InvalidFile();
+		~InvalidFile();
+		InvalidFile(InvalidFile const & src);
+		InvalidFile& operator=(InvalidFile const & rhs);
+	private:
+		virtual const char* what() const throw ();
 };
 
 

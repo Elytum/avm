@@ -14,5 +14,10 @@
 # include <Instruction.hpp>
 # include <LexicalFunction.hpp>
 # include <LexicalType.hpp>
+# include <MissingArgument.hpp>
+# include <ExtraArgument.hpp>
+# include <AssertEmpty.hpp>
+# include <PrintEmpty.hpp>
+# include <MathError.hpp>
 
 #endif

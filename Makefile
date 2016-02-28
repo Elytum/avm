@@ -41,6 +41,11 @@ FILES	=	main.cpp					\
 			errors/Syntax.cpp			\
 			errors/LexicalFunction.cpp	\
 			errors/LexicalType.cpp		\
+			errors/MissingArgument.cpp	\
+			errors/ExtraArgument.cpp	\
+			errors/AssertEmpty.cpp		\
+			errors/PrintEmpty.cpp		\
+			errors/MathError.cpp		\
 			errors/InvalidFile.cpp
 
 INC		=	-I ./includes -I ./srcs/exceptions -I ./srcs/errors -I ./libs -I ./srcs/must

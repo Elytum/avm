@@ -10,17 +10,18 @@ typedef bool(*compiler)(std::string &code, const std::string &function, const st
 
 enum functions : unsigned char
 {
-   PUSH = 0,
-   POP = 1,
-   DUMP = 2,
-   ASSERT = 3,
-   ADD = 4,
-   SUB = 5,
-   MUL = 6,
-   DIV = 7,
-   MOD = 8,
-   PRINT = 9,
-   EXIT = 10,
+   NOP = 0,
+   PUSH = 1,
+   POP = 2,
+   DUMP = 3,
+   ASSERT = 4,
+   ADD = 5,
+   SUB = 6,
+   MUL = 7,
+   DIV = 8,
+   MOD = 9,
+   PRINT = 10,
+   EXIT = 11,
    MAX_FUNCTION
 };
 
