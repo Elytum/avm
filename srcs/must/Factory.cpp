@@ -86,13 +86,13 @@ IOperand const * Factory::createInt8( std::string const & value ) const
 	std::feclearexcept(FE_UNDERFLOW);
 	test = get_double(value.c_str());
 	if (std::fetestexcept(FE_UNDERFLOW))
-		throw Underflow();
+		throw Underflow(test);
 	else if (std::fetestexcept(FE_OVERFLOW))
-		throw Overflow();
+		throw Overflow(test);
 	else if (test < SCHAR_MIN)
-		throw Underflow();
+		throw Underflow(test);
 	else if (test > SCHAR_MAX)
-		throw Overflow();
+		throw Overflow(test);
 	return (new Int8(test));
 }
 
@@ -104,13 +104,13 @@ IOperand const * Factory::createInt16( std::string const & value ) const
 	std::feclearexcept(FE_UNDERFLOW);
 	test = get_double(value.c_str());
 	if (std::fetestexcept(FE_UNDERFLOW))
-		throw Underflow();
+		throw Underflow(test);
 	if (std::fetestexcept(FE_OVERFLOW))
-		throw Overflow();
+		throw Overflow(test);
 	if (test < SHRT_MIN)
-		throw Underflow();
+		throw Underflow(test);
 	else if (test > SHRT_MAX)
-		throw Overflow();
+		throw Overflow(test);
 	return (new Int16(test));
 }
 
@@ -122,13 +122,13 @@ IOperand const * Factory::createInt32( std::string const & value ) const
 	std::feclearexcept(FE_UNDERFLOW);
 	test = get_double(value.c_str());
 	if (std::fetestexcept(FE_UNDERFLOW))
-		throw Underflow();
+		throw Underflow(test);
 	if (std::fetestexcept(FE_OVERFLOW))
-		throw Overflow();
+		throw Overflow(test);
 	if (test < INT_MIN)
-		throw Underflow();
+		throw Underflow(test);
 	else if (test > INT_MAX)
-		throw Overflow();
+		throw Overflow(test);
 	return (new Int32(test));
 }
 
@@ -140,13 +140,13 @@ IOperand const * Factory::createFloat( std::string const & value ) const
     std::feclearexcept(FE_UNDERFLOW);
 	test = get_double(value.c_str());
 	if (std::fetestexcept(FE_UNDERFLOW))
-		throw Underflow();
+		throw Underflow(test);
 	if (std::fetestexcept(FE_OVERFLOW))
-		throw Overflow();
+		throw Overflow(test);
 	if (test < FLT_MIN)
-		throw Underflow();
+		throw Underflow(test);
 	if (test > FLT_MAX)
-		throw Overflow();
+		throw Overflow(test);
 	return (new Float(test));
 }
 
@@ -158,8 +158,8 @@ IOperand const * Factory::createDouble( std::string const & value ) const
     std::feclearexcept(FE_UNDERFLOW);
 	test = get_double(value.c_str());
 	if (std::fetestexcept(FE_UNDERFLOW))
-		throw Underflow();
+		throw Underflow(test);
 	if (std::fetestexcept(FE_OVERFLOW))
-		throw Overflow();
+		throw Overflow(test);
 	return (new Double(test));
 }

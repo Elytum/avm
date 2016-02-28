@@ -148,7 +148,7 @@ bool			execute(const std::string &code)
 					return (true);
 				}
 				default:
-					throw Instruction();
+					throw Instruction(code[i * sizeof(functions)]);
 			}
 			++line;
 		}

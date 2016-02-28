@@ -4,7 +4,11 @@
 #include <exception>
 
 class Instruction : public std::exception {
-	virtual const char* what() const throw ();
+	public:
+		Instruction(const int &id);
+	private:
+		int					_id;
+		virtual const char*	what() const throw ();
 };
 
 #endif

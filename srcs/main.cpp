@@ -22,7 +22,7 @@ std::string    handle_code(const std::string &file_path)
    const std::string    name = file_path.substr(0, file_path.rfind("."));
    const std::string    out = name + ".compiled";
 
-   if (1 == 1 || access(out.c_str(), F_OK) == -1 || (last_edit(out) < last_edit(file_path)))
+   if (access(out.c_str(), F_OK) == -1 || (last_edit(out) < last_edit(file_path)))
    {
       try {
          const std::string content = get_file_contents(file_path.c_str());

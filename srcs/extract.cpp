@@ -65,7 +65,6 @@ struct parse_function_definition_impl : public lexertk::parser_helper
    {
       int sign = 0;
 
-      // std::cout << std::endl << "In: " << func_def << std::endl;
       /*                    Initialize lexer                   */
       if (!init(func_def))
          finish_error(func_def);
@@ -124,14 +123,33 @@ void  compile_function(std::string &code, function_definition &fd, const compile
    fd.clear();
 }
 
+int   countSubstring(const std::string& str, const std::string& sub)
+{
+    if (sub.length() == 0)
+      return 0;
+    int count = 0;
+
+    for (size_t offset = str.find(sub); offset != std::string::npos; offset = str.find(sub, offset + sub.length()))
+        ++count;
+    return count;
+}
+
+size_t  get_line(const std::string &original, const std::string &residual)
+{
+   if (residual.empty())
+      return (countSubstring(original, "\n") + (original.at(original.length() - 1) != '\n'));
+
+   const size_t      pos = original.find(residual);
+   const std::string passedCode = (pos != std::string::npos) ? original.substr(0, pos) : original;
+
+   return (countSubstring(passedCode, "\n"));
+}
 
 std::string extract(const std::string &program, const compiler &compilator)
 {
    function_definition     fd;
    std::string             residual = program;
    std::string             code;
-   int                     line_count = 0;
-   // int                     new_line_pos;
    bool                    valid = true;
 
    /*                    As long as there is lines to compile                       */
@@ -149,7 +167,7 @@ std::string extract(const std::string &program, const compiler &compilator)
    /*                       Rembember that the file is invalid                      */
             valid = false;
    /*                               And tell the error                              */
-            std::cerr << "Ligne " << line_count << " : " << e.what() << std::endl;
+            std::cerr << "Line " << get_line(program, residual) << " : " << e.what() << std::endl;
          }
    /*                          If there is a lexer error                            */
       }
@@ -157,35 +175,8 @@ std::string extract(const std::string &program, const compiler &compilator)
    /*                       Rembember that the file is invalid                      */
          valid = false;
    /*                               And tell the error                              */
-         std::cerr << "Ligne " << line_count << " : " << e.what() << std::endl;
+         std::cerr << "Line " << get_line(program, residual) << " : " << e.what() << std::endl;
       }
-      // else
-   /*                           Else report the error                               */
-      // {
-   /*                           Find newline character                              */
-         // if ((new_line_pos = residual.find("\n")) == -1)
-         // {
-   /*          If there is not, report the error on the remaining line              */
-            // std::cerr << "Line " << line_count << " : Error : '" << residual.c_str() << "'" << std::endl;
-   /*                       Rembember that the file is invalid                      */
-            // valid = false;
-   /*                        Then stop the compilation                              */
-            // break ;
-         // }
-
-   /*                      Else Report the error on only this line                  */
-         // std::cerr << "Line " << line_count << " : Error : '" << residual.substr(0, new_line_pos).c_str() << "'" << std::endl;
-   /*                               And erase this line                             */
-         // residual.erase(0, new_line_pos + 1);
-   /*                       Rembember that the file is invalid                      */
-         // valid = false;
-   /*                         If there is nothing more to compile                   */
-         // if (residual.empty())
-   /*                              Stop the compilation                             */
-            // break ;
-      // }
-   /*                             Increment the line counter                        */
-      ++line_count;
    }
    while (!residual.empty());
    if (valid == false)
@@ -193,54 +184,3 @@ std::string extract(const std::string &program, const compiler &compilator)
    /*                             Return the compiled code                          */
    return (code);
 }
-
-// std::string extract(const std::string &program, const compiler &compilator)
-// {
-//    function_definition     fd;
-//    std::string             residual = program;
-//    std::string             code;
-//    int                     line_count = 0;
-//    int                     new_line_pos;
-//    bool                    valid = true;
-
-   /*                    As long as there is lines to compile                       */
-   // do
-   // {
-   /*                   If lexer parsing goes according to plan                     */
-      // if (parse_function_definition(residual,fd))
-   /*                 Compile the function and add it to the code                   */
-         // compile_function(code, fd, compilator);
-      // else
-   /*                           Else report the error                               */
-      // {
-   /*                           Find newline character                              */
-         // if ((new_line_pos = residual.find("\n")) == -1)
-         // {
-   /*          If there is not, report the error on the remaining line              */
-            // std::cerr << "Line " << line_count << " : Error : '" << residual.c_str() << "'" << std::endl;
-   /*                       Rembember that the file is invalid                      */
-            // valid = false;
-   /*                        Then stop the compilation                              */
-            // break ;
-         // }
-
-   /*                      Else Report the error on only this line                  */
-         // std::cerr << "Line " << line_count << " : Error : '" << residual.substr(0, new_line_pos).c_str() << "'" << std::endl;
-   /*                               And erase this line                             */
-         // residual.erase(0, new_line_pos + 1);
-   /*                       Rembember that the file is invalid                      */
-         // valid = false;
-   /*                         If there is nothing more to compile                   */
-         // if (residual.empty())
-   /*                              Stop the compilation                             */
-            // break ;
-      // }
-   /*                             Increment the line counter                        */
-      // ++line_count;
-   // }
-   // while (!residual.empty());
-   // if (valid == false)
-      // exit(1);
-   /*                             Return the compiled code                          */
-   // return (code);
-// }
