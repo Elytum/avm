@@ -1,11 +1,13 @@
 #include <avm.hpp>
+#include <Errors.hpp>
+#include <IOperand.hpp>
+
 #include <iostream>
 #include <string>
 #include <stdlib.h>
 #include <climits>
 #include <cfloat>
 
-#include <IOperand.hpp>
 
 static constexpr unsigned long long basis = 14695981039346656037ULL; 
 static constexpr unsigned long long prime = 1099511628211ULL;
@@ -62,8 +64,7 @@ bool		add_arguments(std::string &code, const std::string &type, const std::strin
 		}
 		default:
 		{
-			std::cerr << "Unknown type" << std::endl;
-			exit(0);
+			throw LexicalType(type);
 		}
 	}
 	code.append(parameter);
@@ -131,6 +132,10 @@ bool	compilator(std::string &code, const std::string &function, const std::strin
 		{
 			code.push_back(EXIT);
 			break ;
+		}
+		default:
+		{
+			throw LexicalFunction(function);
 		}
 	}
 	return (true);

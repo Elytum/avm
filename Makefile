@@ -39,6 +39,8 @@ FILES	=	main.cpp					\
 			errors/Pop.cpp				\
 			errors/Instruction.cpp		\
 			errors/Syntax.cpp			\
+			errors/LexicalFunction.cpp	\
+			errors/LexicalType.cpp		\
 			errors/InvalidFile.cpp
 
 INC		=	-I ./includes -I ./srcs/exceptions -I ./srcs/errors -I ./libs -I ./srcs/must

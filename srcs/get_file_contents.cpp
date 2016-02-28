@@ -3,8 +3,10 @@
 #include <cerrno>
 #include <Errors.hpp>
 
+  #include <iostream>
 std::string   get_file_contents(const char *filename)
 {
+  std::cout << "Opening: " << filename << std::endl;
   std::ifstream in(filename, std::ios::in | std::ios::binary);
   if (in)
   {
@@ -16,7 +18,5 @@ std::string   get_file_contents(const char *filename)
     in.close();
     return(contents);
   }
-  return ("\n");
-  // else
-  //   throw InvalidFile();
+  throw InvalidFile();
 }

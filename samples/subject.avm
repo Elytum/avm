@@ -13,4 +13,8 @@ dump
 pop
 push int32(42)
 assert int16(42)
+a b c d
+e f g h
+assert int25(42)
+assert int32(42)
 exit

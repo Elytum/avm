@@ -12,5 +12,7 @@
 # include <InvalidFile.hpp>
 # include <Syntax.hpp>
 # include <Instruction.hpp>
+# include <LexicalFunction.hpp>
+# include <LexicalType.hpp>
 
 #endif
